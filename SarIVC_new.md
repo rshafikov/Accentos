@@ -155,7 +155,7 @@
 - Проверяем доступность аккаунта администратор и самого доменного сервера **AD** для предоставленных учетных данных:
 
     ```sh
-    ldapsearch -w <domain_admin_pass> -H ldap://<domain_server_ip> -D "CN=<domain_admin_name>,OU=VIRAZH,OU=Служебные УЗП и ЭПС,OU=ЦКСВТ-АДМИН-ПРО,OU=ЦК СВТ,OU=Services,DC=msk,DC=oao,DC=rzd" -b "OU=VIRAZH,OU=Служебные УЗП и ЭПС,OU=ЦКСВТ-АДМИН-ПРО,OU=ЦК СВТ,OU=Services,DC=msk,DC=oao,DC=rzd" "(objectclass=*)" | grep result # код успешной работы запроса - result: 0 success
+    ldapsearch -H ldap://<domain_server_ip> -D "CN=<domain_admin_name>,OU=VIRAZH,OU=Service Accounts,DC=pvrr,DC=oao,DC=rzd" -b "ou=VIRAZH,ou=Service Accounts,dc=pvrr,dc=oao,dc=rzd" "(objectclass=person)" sAMAccountName -w <domain_admin_pass> | grep result # код успешной работы запроса - result: 0 success
     ```
 
 - На **ВМ** с Windows 10 запускаем консоль от имени Администратора, вводим следующее:
